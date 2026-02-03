@@ -1,0 +1,146 @@
+/* Layout */
+.notify-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main content */
+.notify-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* Title */
+.notify-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Card */
+.notify-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* Table */
+.notify-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table head */
+.notify-table thead {
+  background: #ffc107;
+}
+
+.notify-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header */
+.notify-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.notify-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Body rows */
+.notify-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.notify-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.notify-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* Rounded bottom */
+.notify-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.notify-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notify-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+/* Header with button */
+.notify-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add button */
+.notify-add-btn {
+  background: #ffc107;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 8px 22px;
+}
+
+.notify-add-btn:hover {
+  background: #ffb300;
+}
+
+/* Modal dark */
+.modal-content {
+  background: #000;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  color: #fff;
+}
+
+.modal-title {
+  color: #ffc107;
+}
+
+.modal label {
+  color: #ffc107;
+}
+
+.modal .form-control,
+.modal .form-select {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus {
+  border-color: #ffc107;
+  box-shadow: none;
+}

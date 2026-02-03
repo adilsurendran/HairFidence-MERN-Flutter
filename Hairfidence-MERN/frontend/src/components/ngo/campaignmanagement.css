@@ -1,0 +1,98 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.campaign-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #000;
+}
+
+.campaign-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.campaign-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.campaign-card {
+  max-width: 600px;
+  background: #000;
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+}
+
+/* ===============================
+   FORM
+================================ */
+
+.campaign-card label {
+  color: #ffc107;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.campaign-card .form-control {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.campaign-card .form-control:focus {
+  background: #111;
+  color: #fff;
+  border-color: #ffc107;
+  box-shadow: none;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+.campaign-btn {
+  background: #ffc107;
+  border: none;
+  color: #000;
+  padding: 10px 26px;
+  font-weight: 600;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.campaign-btn:hover {
+  background: #ffb300;
+  color: #000;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .campaign-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .campaign-card {
+    max-width: 100%;
+  }
+}

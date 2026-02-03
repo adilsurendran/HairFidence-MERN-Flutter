@@ -1,0 +1,98 @@
+/* Page layout */
+.report-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Content */
+.report-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* Title */
+.report-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Card */
+.report-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden; /* IMPORTANT for rounded table */
+}
+
+/* Table */
+.report-table {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #000;
+  color: #fff;
+}
+
+/* Table header */
+.report-table thead {
+  background: #ffc107;
+}
+
+.report-table thead th {
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header */
+.report-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.report-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Table body */
+.report-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.report-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.report-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+}
+
+/* Rounded bottom */
+.report-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.report-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .report-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

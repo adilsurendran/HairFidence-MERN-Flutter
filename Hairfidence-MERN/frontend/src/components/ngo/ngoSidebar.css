@@ -1,0 +1,30 @@
+.ngo-sidebar {
+  width: 240px;
+  background: #0d0d0d;
+  min-height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
+
+.ngo-sidebar-title {
+  color: #ffc107;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.ngo-link {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.ngo-link:hover,
+.ngo-link.active {
+  background: #ffc107;
+  color: #000;
+}

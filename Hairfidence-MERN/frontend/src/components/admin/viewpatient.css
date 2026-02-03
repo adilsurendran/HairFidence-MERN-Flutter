@@ -1,0 +1,131 @@
+/* Layout */
+.patient-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main content */
+.patient-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* Title */
+.patient-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Card */
+.patient-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* Table */
+.patient-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table head */
+.patient-table thead {
+  background: #ffc107;
+}
+
+.patient-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header */
+.patient-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.patient-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Body rows */
+.patient-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.patient-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.patient-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* Rounded bottom */
+.patient-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.patient-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* Action buttons */
+.patient-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-block {
+  background: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-block:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.btn-unblock {
+  background: transparent;
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-unblock:hover {
+  background: #28a745;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .patient-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

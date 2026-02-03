@@ -1,0 +1,118 @@
+/* Full layout */
+.viewngo-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main content beside sidebar */
+.viewngo-main {
+  
+  margin-left: 260px; /* IMPORTANT: matches sidebar width */
+  padding: 35px;
+  width: 100%;
+}
+
+/* Page title */
+.viewngo-title {
+  color: #ffc107;
+  
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Card container */
+.viewngo-card {
+  background: #0d0d0d;
+  border-radius: 16px;
+  
+  padding: 20px;
+  border: 1px solid rgba(255, 193, 7, 0.25);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.15);
+}
+
+/* Table */
+.viewngo-table {
+  
+  margin-bottom: 0;
+  color: #fff;
+}
+
+/* Header */
+.viewngo-table thead {
+  background: #111;
+  
+}
+
+.viewngo-table thead th {
+  color: #ffc107;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #333;
+}
+
+/* Rows */
+.viewngo-table tbody tr {
+  background: #0b0b0b;
+  
+  transition: 0.3s;
+}
+
+.viewngo-table tbody tr:hover {
+  background: #151515;
+  
+}
+
+/* Borders */
+.viewngo-table th,
+
+.viewngo-table td {
+  border-color: #222;
+  
+  vertical-align: middle;
+}
+
+/* Action buttons */
+.viewngo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: transparent;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+}
+
+.btn-edit:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+.btn-delete {
+  background: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+
+.btn-delete:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .viewngo-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+.patient-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.patient-table thead th:last-child {
+  border-top-right-radius: 14px;
+}

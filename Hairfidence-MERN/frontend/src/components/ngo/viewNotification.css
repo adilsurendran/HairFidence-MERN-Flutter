@@ -1,0 +1,111 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.notification-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main content */
+.notification-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.notification-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.notification-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.notification-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table header */
+.notification-table thead {
+  background: #ffc107;
+}
+
+.notification-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header corners */
+.notification-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.notification-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Body rows */
+.notification-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.notification-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.notification-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  vertical-align: middle;
+}
+
+/* Rounded bottom corners */
+.notification-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.notification-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .notification-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

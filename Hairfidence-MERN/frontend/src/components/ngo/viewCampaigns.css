@@ -1,0 +1,188 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.campaign-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+.campaign-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.campaign-main h1 {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.campaign-table-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.campaign-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table head */
+.campaign-table thead {
+  background: #ffc107;
+}
+
+.campaign-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header */
+.campaign-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.campaign-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Body rows */
+.campaign-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.campaign-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.campaign-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* Rounded bottom */
+.campaign-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.campaign-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* ===============================
+   IMAGE
+================================ */
+
+.campaign-table img {
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+
+.campaign-table button {
+  background: transparent;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.campaign-table .btn-primary {
+  border: 1px solid #ffc107;
+  color: #ffc107;
+}
+
+.campaign-table .btn-primary:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+.campaign-table .btn-danger {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+
+.campaign-table .btn-danger:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* ===============================
+   MODAL (DARK)
+================================ */
+
+.modal-content {
+  background: #000;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  color: #fff;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: #222;
+}
+
+.modal-title {
+  color: #ffc107;
+}
+
+.modal label {
+  color: #ffc107;
+  font-size: 14px;
+}
+
+.modal .form-control {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.modal .form-control:focus {
+  border-color: #ffc107;
+  box-shadow: none;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .campaign-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

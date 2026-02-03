@@ -1,0 +1,165 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.appointment-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main content */
+.appointment-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.appointment-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.appointment-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.appointment-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table head */
+.appointment-table thead {
+  background: #ffc107;
+}
+
+.appointment-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+/* Rounded header */
+.appointment-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.appointment-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Body rows */
+.appointment-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.appointment-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.appointment-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* Rounded bottom */
+.appointment-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.appointment-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* ===============================
+   STATUS
+================================ */
+
+.appointment-status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.appointment-status.pending {
+  background: rgba(255, 193, 7, 0.25);
+  color: #ffc107;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+
+.appointment-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-approve {
+  background: transparent;
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-approve:hover {
+  background: #28a745;
+  color: #fff;
+}
+
+.btn-reject {
+  background: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-reject:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .appointment-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

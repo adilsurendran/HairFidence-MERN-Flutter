@@ -1,0 +1,48 @@
+.admin-container {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+.admin-content {
+  margin-left: 240px;
+  padding: 30px;
+  width: 100%;
+}
+
+.dashboard-title {
+  color: #ffc107;
+  margin-bottom: 30px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: #111;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.stat-card h2 {
+  color: #ffc107;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  color: #aaa;
+  font-size: 16px;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+}

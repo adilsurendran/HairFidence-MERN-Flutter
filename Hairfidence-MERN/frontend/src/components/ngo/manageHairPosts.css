@@ -1,0 +1,176 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.hairpost-main {
+  margin-left: 260px;
+  padding: 35px;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.hairpost-main h2 {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD (POST ITEM)
+================================ */
+
+.hairpost-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 22px rgba(255, 193, 7, 0.18);
+  transition: 0.3s ease;
+}
+
+.hairpost-card:hover {
+  background: #111;
+}
+
+.hairpost-card h4 {
+  color: #ffc107;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.hairpost-card p {
+  color: #ddd;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+
+.hairpost-card button {
+  background: transparent;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.hairpost-card .btn-primary {
+  border: 1px solid #ffc107;
+  color: #ffc107;
+}
+
+.hairpost-card .btn-primary:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+.hairpost-card .btn-danger {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+
+.hairpost-card .btn-danger:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* ===============================
+   MODAL (DARK THEME)
+================================ */
+
+.modal-content {
+  background: #000;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  color: #fff;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: #222;
+}
+
+.modal-title {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+/* Close button */
+.modal-header .btn-close {
+  filter: invert(1);
+}
+
+/* ===============================
+   MODAL FORM
+================================ */
+
+.modal label {
+  color: #ffc107;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.modal .form-control,
+.modal .form-select {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus {
+  background: #111;
+  border-color: #ffc107;
+  box-shadow: none;
+}
+
+/* ===============================
+   MODAL BUTTONS
+================================ */
+
+.modal-footer .btn-success {
+  background: #ffc107;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 8px 22px;
+}
+
+.modal-footer .btn-success:hover {
+  background: #ffb300;
+}
+
+.modal-footer .btn-secondary {
+  background: transparent;
+  border: 1px solid #6c757d;
+  color: #ccc;
+  border-radius: 25px;
+  padding: 8px 22px;
+}
+
+.modal-footer .btn-secondary:hover {
+  background: #6c757d;
+  color: #fff;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .hairpost-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
