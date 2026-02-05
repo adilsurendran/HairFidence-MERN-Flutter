@@ -612,7 +612,6 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-import 'package:hairfidence/AddandManagePost.dart';
 import 'package:hairfidence/Feedback.dart';
 import 'package:hairfidence/ManageReport.dart';
 import 'package:hairfidence/UpdateProfile.dart';

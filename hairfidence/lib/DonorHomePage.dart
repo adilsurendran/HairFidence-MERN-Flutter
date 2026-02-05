@@ -1,13 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hairfidence/DonorAddandManagePost.dart';
 import 'package:hairfidence/DonorProfilePage.dart';
 import 'package:hairfidence/DonorRegister.dart';
 import 'package:hairfidence/Donor_manage_hair_posts_page.dart';
 import 'package:hairfidence/Donor_send_complaint_page.dart';
 import 'package:hairfidence/Donor_view_notifications_page.dart';
-import 'package:hairfidence/UpdateProfile.dart';
-import 'package:hairfidence/ViewNotification.dart';
 import 'package:hairfidence/upcoming_campaigns_page.dart';
 import 'package:hairfidence/view_my_complaints_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
