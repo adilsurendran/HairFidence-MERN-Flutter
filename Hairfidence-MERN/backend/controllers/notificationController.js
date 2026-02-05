@@ -47,3 +47,39 @@ export const getNgoNotifications = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch notifications" });
   }
 };
+
+export const getPatientNotifications = async (req, res) => {
+  try {
+    const { patientId } = req.params;
+
+    // patientId kept for future (personal notifications)
+    const notifications = await Notification.find({
+      roles: { $in: ["patient", "all"] },
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json(notifications);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Failed to fetch notifications",
+    });
+  }
+};
+
+export const getDonorNotifications = async (req, res) => {
+  try {
+    const { donorId } = req.params;
+
+    // donorId kept for future personal notifications
+    const notifications = await Notification.find({
+      roles: { $in: ["donor", "all"] },
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json(notifications);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Failed to fetch notifications",
+    });
+  }
+};

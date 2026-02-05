@@ -1,0 +1,124 @@
+/* ===============================
+   LAYOUT
+================================ */
+
+.complaint-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+.complaint-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* ===============================
+   TITLE
+================================ */
+
+.complaint-main h1 {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.complaint-table-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.complaint-table {
+  width: 100%;
+  background: #000;
+}
+
+.complaint-table thead {
+  background: #ffc107;
+}
+
+.complaint-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+.complaint-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* ===============================
+   STATUS
+================================ */
+
+.status-replied {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.complaint-table .btn-primary {
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  background: transparent;
+}
+
+.complaint-table .btn-primary:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+/* ===============================
+   MODAL
+================================ */
+
+.modal-content {
+  background: #000;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  color: #fff;
+}
+
+.modal-title {
+  color: #ffc107;
+}
+
+.modal label {
+  color: #ffc107;
+}
+
+.modal .form-control {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.modal .form-control:focus {
+  border-color: #ffc107;
+  box-shadow: none;
+}

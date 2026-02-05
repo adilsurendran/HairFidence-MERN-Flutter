@@ -1,6 +1,9 @@
 import bcrypt from "bcryptjs";
 import Login from "../models/login.js";
 import Ngo from "../models/ngo.js";
+import PatientPost from "../models/PatientPost.js";
+import PatientPostRequest from "../models/PatientPostRequest.js";
+import PatientReport from "../models/PatientReport.js";
 
 
 export const addNgo = async (req, res) => {
@@ -125,3 +128,107 @@ export const deleteNgo = async (req, res) => {
     res.status(500).json({ message: "Failed to delete NGO" });
   }
 };
+
+
+/**
+ * NGO – View all active patient posts
+ */
+// export const getActivePatientPosts = async (req, res) => {
+//   console.log("hii");
+  
+//   try {
+//     const posts = await PatientPost.find({ status: "active" })
+//       .populate("patientId", "name district");
+
+//     return res.status(200).json(posts);
+//   } catch (err) {
+//     console.log(err);
+    
+//     return res.status(500).json({ message: "Failed to fetch patient posts",err });
+//   }
+// };
+export const getActivePatientPosts = async (req, res) => {
+  try {
+    // 1. fetch active posts + patient basic info
+    const posts = await PatientPost.find({ status: "active" })
+      .populate("patientId", "name district");
+
+    // 2. attach patient reports to each post
+    const postsWithReports = await Promise.all(
+      posts.map(async (post) => {
+        const reports = await PatientReport.find({
+          patientId: post.patientId._id,
+        }).sort({ createdAt: -1 });
+
+        return {
+          ...post.toObject(),
+          patientReports: reports,
+        };
+      })
+    );
+
+    return res.status(200).json(postsWithReports);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Failed to fetch patient posts",
+      err,
+    });
+  }
+};
+
+export const sendRequestToPatientPost = async (req, res) => {
+  try {
+    const { postId, patientId, ngoId, message } = req.body;
+
+    if (!postId || !patientId || !ngoId) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Prevent duplicate request
+    const exists = await PatientPostRequest.findOne({
+      postId,
+      ngoId,
+    });
+
+    if (exists) {
+      return res
+        .status(409)
+        .json({ message: "Request already sent" });
+    }
+
+    const request = await PatientPostRequest.create({
+      postId,
+      patientId,
+      ngoId,
+      message,
+    });
+
+    res.status(201).json({
+      message: "Request sent successfully",
+      request,
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to send request" });
+  }
+};
+
+/**
+ * NGO – View all requests sent by this NGO
+ */
+export const getNgoRequests = async (req, res) => {
+  try {
+    const { ngoId } = req.params;
+
+    const requests = await PatientPostRequest.find({ ngoId })
+      .populate("postId")
+      .populate("patientId", "name phone district");
+
+    res.status(200).json(requests);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch requests" });
+  }
+};
+
+
+

@@ -17,17 +17,20 @@ function NgoSidebar() {
       <NavLink to="/NgoDashboard" className="ngo-link">
         Dashboard
       </NavLink>
-      <NavLink to="/ViewAppointments" className="ngo-link">
-        View Appointments
+      <NavLink to="/ngo/donorpost" className="ngo-link">
+        Donor posts
+      </NavLink>
+      <NavLink to="/ViewPatientPost" className="ngo-link">
+        View Patients Post
+      </NavLink>
+      <NavLink to="/Viewrequeststatus" className="ngo-link">
+        My Request Status
       </NavLink>
       <NavLink to="/CampaignManagement" className="ngo-link">
         Add Campaign
       </NavLink>
       <NavLink to="/ngo/view-campaigns" className="ngo-link">
         Campaign Management
-      </NavLink>
-      <NavLink to="/ViewReport" className="ngo-link">
-        View Reports
       </NavLink>
       <NavLink to="/ViewNotification" className="ngo-link">
         Notifications
@@ -37,6 +40,12 @@ function NgoSidebar() {
       </NavLink>
       <NavLink to="/managePost" className="ngo-link">
         Manage post
+      </NavLink>
+      <NavLink to="/ViewReq" className="ngo-link">
+        View Request
+      </NavLink>
+      <NavLink to="/ngo/complaits" className="ngo-link">
+        Complaints
       </NavLink>
       <button className="logout-btn" onClick={handleLogout}>
             Logout

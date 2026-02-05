@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:hairfidence/DonorRegister.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairfidence/login.dart';
 import 'PatientHomePage.dart'; // adjust import path if needed
@@ -11,8 +12,8 @@ class PatientProfilePage extends StatefulWidget {
   State<PatientProfilePage> createState() => _PatientProfilePageState();
 }
 
-class _PatientProfilePageState extends State<PatientProfilePage> {
   final Dio dio = Dio();
+class _PatientProfilePageState extends State<PatientProfilePage> {
   final _formKey = GlobalKey<FormState>();
 
   final Color gold = const Color(0xFFFFC107);
@@ -122,22 +123,6 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
     }
   }
 
-  /* ===========================
-     BOTTOM NAV HANDLER
-  ============================ */
-  void onBottomNavTap(int index) {
-    if (index == currentIndex) return;
-
-    if (index == 0) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const PatientHomePage()),
-      );
-    }
-
-    // index 1 → NGO Posts (later)
-    // index 2 → My Posts (later)
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -235,36 +220,7 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
               ),
             ),
 
-      /* ===========================
-         BOTTOM NAV BAR
-      ============================ */
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: onBottomNavTap,
-        backgroundColor: Colors.black,
-        selectedItemColor: gold,
-        unselectedItemColor: Colors.white54,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.campaign),
-            label: "NGO Posts",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.post_add),
-            label: "My Posts",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
-      ),
-    );
+         );
   }
 
   /* ===========================
@@ -299,7 +255,7 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: DropdownButtonFormField<String>(
-        value: value,
+        initialValue: value,
         dropdownColor: Colors.black,
         style: const TextStyle(color: Colors.white),
         decoration: _decoration(label, icon),

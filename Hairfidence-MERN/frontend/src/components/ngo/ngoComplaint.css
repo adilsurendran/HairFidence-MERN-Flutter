@@ -1,0 +1,100 @@
+.complaint-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+.complaint-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+.complaint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.complaint-header h1 {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.complaint-header button {
+  background: #ffc107;
+  color: #000;
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 8px 18px;
+  border: none;
+}
+
+.complaint-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+}
+
+.complaint-table thead {
+  background: #ffc107;
+}
+
+.complaint-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.complaint-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  color: #fff;
+}
+
+.status-pending {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.status-replied {
+  color: #198754;
+  font-weight: bold;
+}
+
+/* MODAL */
+.modal-content {
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.modal-title {
+  color: #ffc107;
+}
+
+.modal label {
+  color: #ffc107;
+}
+
+.modal .form-control {
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.modal .form-control:focus {
+  border-color: #ffc107;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .complaint-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

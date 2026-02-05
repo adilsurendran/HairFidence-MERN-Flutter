@@ -1,0 +1,52 @@
+.ngo-req-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+.ngo-req-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+.ngo-req-main h1 {
+  color: #ffc107;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.ngo-req-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+}
+
+.ngo-req-table thead {
+  background: #ffc107;
+}
+
+.ngo-req-table thead th {
+  color: #000;
+  font-size: 13px;
+  padding: 14px;
+  border: none;
+}
+
+.ngo-req-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+}
+
+.ngo-req-table button {
+  background: transparent;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+}
+
+.ngo-req-table button:hover {
+  background: #ffc107;
+  color: #000;
+}

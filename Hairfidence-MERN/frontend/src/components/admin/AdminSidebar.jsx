@@ -17,6 +17,9 @@ function AdminSidebar() {
       <NavLink to="/dashboardAdmin" className="sidebar-link">
         Dashboard
       </NavLink>
+      <NavLink to="/AddNgo" className="sidebar-link">
+        Add NGO
+      </NavLink>
       <NavLink to="/ViewNgo" className="sidebar-link">
         Manage NGO
       </NavLink>
@@ -28,6 +31,9 @@ function AdminSidebar() {
       </NavLink>
       <NavLink to="/ViewFeedback" className="sidebar-link">
         View Feedback
+      </NavLink>
+      <NavLink to="/managecomplaints" className="sidebar-link">
+        Manage Complaints
       </NavLink>
       <NavLink to="/SendNotification" className="sidebar-link">
         Send Notification

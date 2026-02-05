@@ -1,18 +1,23 @@
-/* Layout */
+/* ===============================
+   LAYOUT
+================================ */
+
 .feedback-wrapper {
   display: flex;
-  min-height: 100vh;
   background: #000;
+  min-height: 100vh;
 }
 
-/* Main content */
 .feedback-main {
   margin-left: 260px;
   padding: 35px;
   width: 100%;
 }
 
-/* Title */
+/* ===============================
+   TITLE
+================================ */
+
 .feedback-title {
   color: #ffc107;
   font-size: 28px;
@@ -20,74 +25,77 @@
   margin-bottom: 25px;
 }
 
-/* Card */
+/* ===============================
+   CARD
+================================ */
+
 .feedback-card {
   background: #000;
-  padding: 18px;
   border-radius: 18px;
+  padding: 18px;
   border: 1px solid rgba(255, 193, 7, 0.35);
   box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
-  overflow: hidden;
 }
 
-/* Table */
+/* ===============================
+   TABLE
+================================ */
+
 .feedback-table {
   width: 100%;
   background: #000;
-  color: #fff;
-  border-collapse: separate;
-  border-spacing: 0;
 }
 
-/* Header */
 .feedback-table thead {
   background: #ffc107;
 }
 
 .feedback-table thead th {
   color: #000;
-  padding: 14px;
   font-size: 13px;
   text-transform: uppercase;
+  padding: 14px;
   border: none;
 }
 
-/* Rounded header */
-.feedback-table thead th:first-child {
-  border-top-left-radius: 14px;
-}
-
-.feedback-table thead th:last-child {
-  border-top-right-radius: 14px;
-}
-
-/* Rows */
-.feedback-table tbody tr {
-  background: #000;
-  transition: 0.3s;
-}
-
-.feedback-table tbody tr:hover {
-  background: #111;
-}
-
-/* Cells */
 .feedback-table td {
   padding: 14px;
   border-top: 1px solid #222;
+  color: #fff;
   vertical-align: middle;
 }
 
-/* Rounded bottom */
-.feedback-table tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 14px;
+/* ===============================
+   ROLE BADGES
+================================ */
+
+.role-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
 }
 
-.feedback-table tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 14px;
+.role-patient {
+  background: rgba(0, 123, 255, 0.15);
+  color: #0d6efd;
 }
 
-/* Responsive */
+.role-donor {
+  background: rgba(25, 135, 84, 0.15);
+  color: #198754;
+}
+
+.role-ngo {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
 @media (max-width: 768px) {
   .feedback-main {
     margin-left: 0;

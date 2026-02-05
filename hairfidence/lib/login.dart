@@ -4,9 +4,9 @@ import 'package:hairfidence/DonorHomePage.dart';
 import 'package:hairfidence/PatientHomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairfidence/DonorRegister.dart';
-import 'package:hairfidence/Register.dart';
+import 'package:hairfidence/Register.dart' hide baseUrl;
 
-String baseUrl = "http://192.168.1.35:8000/api";
+// String baseUrl = "http://192.168.1.35:8000/api";
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -14,7 +14,7 @@ class Loginpage extends StatefulWidget {
   @override
   State<Loginpage> createState() => _LoginpageState();
 }
-
+ String? proid;
 class _LoginpageState extends State<Loginpage> {
   final Dio dio = Dio();
 
@@ -46,7 +46,7 @@ class _LoginpageState extends State<Loginpage> {
       );
 print(res.data);
       final data = res.data;
-
+proid= data["profileId"];
       /// STORE DATA GLOBALLY
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString("loginId", data["loginId"]);

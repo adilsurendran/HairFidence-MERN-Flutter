@@ -1,4 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hairfidence/DonorAddandManagePost.dart';
+import 'package:hairfidence/DonorProfilePage.dart';
+import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/Donor_manage_hair_posts_page.dart';
+import 'package:hairfidence/Donor_send_complaint_page.dart';
+import 'package:hairfidence/Donor_view_notifications_page.dart';
+import 'package:hairfidence/UpdateProfile.dart';
+import 'package:hairfidence/ViewNotification.dart';
+import 'package:hairfidence/upcoming_campaigns_page.dart';
+import 'package:hairfidence/view_my_complaints_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairfidence/login.dart';
 
@@ -9,12 +20,31 @@ class DonorHomePage extends StatefulWidget {
   State<DonorHomePage> createState() => _DonorHomePageState();
 }
 
+ String? ngoId;
+
 class _DonorHomePageState extends State<DonorHomePage> {
   int currentIndex = 0;
+  final Dio dio = Dio();
 
   final Color gold = const Color(0xFFFFC107);
   final Color dark = Colors.black;
 
+  Future <void> getdetails() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+    final donorId = prefs.getString("profileId");
+      final res = await dio.get("$baseUrl/donor/$donorId");
+      ngoId=res.data["ngoId"];
+      print(ngoId);
+    } catch (e) {
+      print(e);
+    }
+  }
+    @override
+  void initState() {
+    super.initState();
+    getdetails();
+  }
   /// ===========================
   /// LOGOUT
   /// ===========================
@@ -59,9 +89,7 @@ class _DonorHomePageState extends State<DonorHomePage> {
           /// NOTIFICATIONS
           IconButton(
             icon: Icon(Icons.notifications_none, color: gold),
-            onPressed: () {
-              // Navigate to notifications
-            },
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DonorViewNotificationsPage(),)),
           ),
 
           /// LOGOUT
@@ -158,22 +186,23 @@ class _DonorHomePageState extends State<DonorHomePage> {
                 _actionCard(
                   icon: Icons.post_add,
                   title: "Add & Manage\nPosts",
-                  onTap: () {},
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DonorManageHairPostsPage(),)),
+                
                 ),
-                _actionCard(
-                  icon: Icons.history,
-                  title: "Donation\nHistory",
-                  onTap: () {},
-                ),
+                // _actionCard(
+                //   icon: Icons.history,
+                //   title: "Donation\nHistory",
+                //   onTap: () {},
+                // ),
                 _actionCard(
                   icon: Icons.person,
                   title: "My\nProfile",
-                  onTap: () {},
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DonorProfilePage(),)),
                 ),
                 _actionCard(
                   icon: Icons.notifications,
                   title: "View\nNotifications",
-                  onTap: () {},
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DonorViewNotificationsPage(),)),
                 ),
                 _actionCard(
                   icon: Icons.chat,
@@ -182,8 +211,18 @@ class _DonorHomePageState extends State<DonorHomePage> {
                 ),
                 _actionCard(
                   icon: Icons.report_problem,
-                  title: "Complaints",
-                  onTap: () {},
+                  title: "Send a \n Complaints",
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DonorSendComplaintPage(),)),
+                ),
+                _actionCard(
+                  icon: Icons.report_problem,
+                  title: "My Complaints",
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ViewMyComplaintsPage(),)),
+                ),
+                _actionCard(
+                  icon: Icons.report_problem,
+                  title: "Campaigns",
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UpcomingCampaignsPage(),)),
                 ),
               ],
             ),
@@ -232,10 +271,10 @@ class _DonorHomePageState extends State<DonorHomePage> {
             icon: Icon(Icons.post_add),
             label: "Posts",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: "History",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.history),
+          //   label: "History",
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Profile",

@@ -26,6 +26,12 @@ import NgoDashboard from './components/ngo/NgoDashboard'
 import ViewCampaigns from './components/ngo/ViewCampaigns'
 import AddHairPost from './components/ngo/AddHairPost'
 import ManageHairPosts from './components/ngo/ManageHairPosts'
+import ViewPatientPosts from './components/ngo/ViewPatientPosts'
+import NgoMyRequests from './components/ngo/NgoMyRequests'
+import ViewComplaints from './components/admin/ViewComplaints'
+import NgoComplaints from './components/ngo/NgoComplaints'
+import NgoHairRequests from './components/ngo/NgoHairRequests'
+import NgoDonorHairPosts from './components/ngo/NgoDonorHairPosts'
 
 function App() {
 
@@ -49,17 +55,22 @@ function App() {
         <Route path='/ViewFeedback' element={<ViewFeedback/>}/>
         <Route path='/SendNotification' element={<SendNotification/>}/>
         <Route path='/Report' element={<Report/>}/>
+        <Route path='/managecomplaints' element={<ViewComplaints/>}/>
 
 
         <Route path='/NgoDashboard' element={<NgoDashboard/>}/>
         <Route path='/ViewAppointments' element={<ViewAppointments/>}/>
         <Route path='/CampaignManagment' element={<CampaignManagment/>}/>
         <Route path="/ngo/view-campaigns" element={<ViewCampaigns />} />
-        <Route path='/ViewReport' element={<ViewReport/>}/>
+        <Route path='/ViewReq' element={<NgoHairRequests/>}/>
         <Route path='/ViewNotification' element={<ViewNotification/>}/>
           <Route path='/AddUpdates' element={<AddUpdates/>}/>
           <Route path='/AddPost' element={<AddHairPost/>}/>
           <Route path='/managePost' element={<ManageHairPosts/>}/>
+          <Route path='/ViewPatientPost' element={<ViewPatientPosts/>}/>
+          <Route path='/Viewrequeststatus' element={<NgoMyRequests/>}/>
+          <Route path='/ngo/complaits' element={<NgoComplaints/>}/>
+          <Route path='/ngo/donorpost' element={<NgoDonorHairPosts/>}/>
 
            </Routes>
     </>

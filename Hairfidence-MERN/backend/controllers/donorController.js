@@ -96,3 +96,100 @@ export const getAllNgos = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch NGOs" });
   }
 };
+
+export const getdetails = async(req,res)=>{
+  try{
+    const {id} = req.params
+    const user = await Donor.findById(id);
+    return res.status(200).json(user)
+  }
+  catch(e){
+    console.log(e);
+        return res.status(500).json({message:"server error"})
+
+  }
+}
+
+
+export const getDonorProfile = async (req, res) => {
+  try {
+    const { donorId } = req.params;
+
+    const donor = await Donor.findById(donorId)
+      .populate("ngoId", "name place pincode");
+
+    if (!donor) {
+      return res.status(404).json({
+        message: "Donor not found",
+      });
+    }
+
+    res.status(200).json({
+      _id: donor._id,
+      name: donor.name,
+      email: donor.email,
+      phone: donor.phone,
+      address: donor.address,
+      pin: donor.pin,
+      district: donor.district,
+      gender: donor.gender,
+      dob: donor.dob,
+      ngoId: donor.ngoId?._id, // ✅ Flutter expects ID
+      ngoDetails: donor.ngoId, // optional (future use)
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to fetch donor profile",
+    });
+  }
+};
+
+/* ===============================
+   UPDATE DONOR PROFILE
+================================ */
+export const updateDonorProfile = async (req, res) => {
+  try {
+    const { donorId } = req.params;
+
+    const {
+      name,
+      phone,
+      address,
+      pin,
+      district,
+      gender,
+      dob,
+      ngoId,
+    } = req.body;
+
+    const donor = await Donor.findById(donorId);
+
+    if (!donor) {
+      return res.status(404).json({
+        message: "Donor not found",
+      });
+    }
+
+    // Update allowed fields only
+    donor.name = name ?? donor.name;
+    donor.phone = phone ?? donor.phone;
+    donor.address = address ?? donor.address;
+    donor.pin = pin ?? donor.pin;
+    donor.district = district ?? donor.district;
+    donor.gender = gender ?? donor.gender;
+    donor.dob = dob ?? donor.dob;
+    donor.ngoId = ngoId ?? donor.ngoId; // ✅ NGO update allowed
+
+    await donor.save();
+
+    res.status(200).json({
+      message: "Donor profile updated successfully",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to update donor profile",
+    });
+  }
+};

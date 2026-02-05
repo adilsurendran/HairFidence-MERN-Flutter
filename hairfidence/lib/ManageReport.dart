@@ -559,7 +559,7 @@ class _AddManageReportPageState extends State<AddManageReportPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: DropdownButtonFormField<String>(
-        value: reportType,
+        initialValue: reportType,
         dropdownColor: Colors.black,
         decoration: _decoration("Report Type"),
         items: ["Blood Test", "Scan / X-Ray", "Prescription", "Other"]

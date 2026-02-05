@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/login.dart';
 
-String baseUrl = "http://192.168.1.35:8000/api"; // change if needed
+String baseUrl = "http://192.168.1.36:8000/api"; // change if needed
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -164,7 +164,7 @@ class _RegisterState extends State<Register> {
                     dropdownColor: Colors.black,
                     decoration: _inputDecoration("Gender", Icons.people),
                     style: const TextStyle(color: Colors.white),
-                    value: selectedGender,
+                    initialValue: selectedGender,
                     items: ["Male", "Female"]
                         .map(
                           (e) => DropdownMenuItem(

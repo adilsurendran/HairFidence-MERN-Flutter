@@ -12,7 +12,6 @@ const hairPostSchema = new mongoose.Schema(
     hairLength: { type: Number, required: true },
     hairType: { type: String, required: true },
     hairColor: { type: String, required: true },
-
     chemicallyTreated: {
       type: String,
       enum: ["yes", "no"],
@@ -29,6 +28,7 @@ const hairPostSchema = new mongoose.Schema(
     condition: { type: String, required: true },
     location: { type: String, required: true },
     description: { type: String },
+    status:{type:String, default:"active",enum:["active", "closed"]}
   },
   { timestamps: true }
 );

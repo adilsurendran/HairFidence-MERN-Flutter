@@ -80,7 +80,7 @@ function ViewCampaigns() {
                 <td>
                   {c.image && (
                     <img
-                      src={`http://localhost:8000/uploads/${c.image}`}
+                      src={`http://localhost:8000/api/uploads/${c.image}`}
                       alt=""
                       width="60"
                     />
