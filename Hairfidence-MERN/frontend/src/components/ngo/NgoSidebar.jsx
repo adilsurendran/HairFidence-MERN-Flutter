@@ -17,6 +17,9 @@ function NgoSidebar() {
       <NavLink to="/NgoDashboard" className="ngo-link">
         Dashboard
       </NavLink>
+      <NavLink to="/ngo/chat" className="ngo-link">
+        Chat
+      </NavLink>
       <NavLink to="/ngo/donorpost" className="ngo-link">
         Donor posts
       </NavLink>

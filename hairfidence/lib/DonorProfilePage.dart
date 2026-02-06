@@ -214,7 +214,7 @@ class _DonorProfilePageState extends State<DonorProfilePage> {
 
                           /// NGO SELECT
                           DropdownButtonFormField<String>(
-                            initialValue: selectedNgoId,
+                            value: selectedNgoId,
                             dropdownColor: Colors.black,
                             decoration:
                                 _decoration("Select NGO", Icons.business),
@@ -287,7 +287,7 @@ class _DonorProfilePageState extends State<DonorProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: DropdownButtonFormField<String>(
-        initialValue: value,
+        value: value,
         dropdownColor: Colors.black,
         decoration: _decoration(label, icon),
         items: items

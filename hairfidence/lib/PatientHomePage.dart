@@ -612,8 +612,10 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:hairfidence/AddandManagePost.dart';
 import 'package:hairfidence/Feedback.dart';
 import 'package:hairfidence/ManageReport.dart';
+import 'package:hairfidence/PatientChatListPage.dart';
 import 'package:hairfidence/UpdateProfile.dart';
 import 'package:hairfidence/ViewNgoPost.dart';
 import 'package:hairfidence/ViewNotification.dart';
@@ -768,7 +770,7 @@ class _PatientHomePageState extends State<PatientHomePage> {
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UpcomingCampaignsPage(),))),
         _actionCard(Icons.person, "Profile\nManagement",
             onTap: () => setState(() => currentIndex = 3)),
-        _actionCard(Icons.chat, "Chat with\nNGO", onTap: _comingSoon),
+        _actionCard(Icons.chat, "Chat with\nNGO", onTap:  ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => PatientChatListPage(),))),
         _actionCard(Icons.feedback, "Send\nFeedback", onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => SendFeedbackPage(),))),
         _actionCard(Icons.report_problem, "Send\nComplaint", onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => SendComplaintPage(),))),
         _actionCard(Icons.report_problem, "View my \nComplaint", onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => ViewMyComplaintsPage(),))),

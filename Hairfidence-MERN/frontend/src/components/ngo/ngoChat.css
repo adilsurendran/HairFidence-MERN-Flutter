@@ -1,0 +1,164 @@
+.ngo-chat-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #000;
+}
+
+.ngo-chat-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+.ngo-chat-title {
+  color: #ffc107;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.ngo-chat-card {
+  display: flex;
+  height: 75vh;
+  border: 1px solid rgba(255,193,7,.35);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* CHAT LIST */
+.chat-list {
+  width: 30%;
+  background: #000;
+  border-right: 1px solid #333;
+}
+
+.chat-list-header {
+  padding: 15px;
+  color: #ffc107;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-plus {
+  cursor: pointer;
+}
+
+.chat-list-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+}
+
+.chat-list-item:hover {
+  background: #111;
+}
+
+.chat-name {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.chat-last {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.chat-unread {
+  background: #ffc107;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  float: right;
+}
+
+/* CHAT WINDOW */
+.chat-window {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  padding: 15px;
+  color: #ffc107;
+  border-bottom: 1px solid #333;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.msg {
+  max-width: 60%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.msg-sent {
+  background: #ffc107;
+  color: #000;
+  margin-left: auto;
+}
+
+.msg-received {
+  background: #111;
+  color: #fff;
+}
+
+/* INPUT */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #333;
+}
+
+.chat-input input {
+  flex: 1;
+  background: #111;
+  border: none;
+  padding: 12px;
+  color: #fff;
+}
+
+.chat-input button {
+  background: #ffc107;
+  border: none;
+  padding: 0 25px;
+  font-weight: 600;
+}
+
+/* PLACEHOLDER */
+.chat-placeholder {
+  color: #777;
+  margin: auto;
+}
+
+/* DONOR MODAL */
+.donor-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donor-card {
+  background: #000;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #ffc107;
+}
+
+.donor-item {
+  padding: 10px;
+  color: #ffc107;
+  cursor: pointer;
+}
+
+.donor-item:hover {
+  background: #111;
+}

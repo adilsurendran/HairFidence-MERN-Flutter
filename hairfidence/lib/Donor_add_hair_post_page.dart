@@ -368,7 +368,7 @@ class _DonorAddHairPostPageState extends State<DonorAddHairPostPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
       child: DropdownButtonFormField<String>(
-        initialValue: value,
+        value: value,
         dropdownColor: Colors.black,
         decoration: _decoration(label),
         style: const TextStyle(color: Colors.white),

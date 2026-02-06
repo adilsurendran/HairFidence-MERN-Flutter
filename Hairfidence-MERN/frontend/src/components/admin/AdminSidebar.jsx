@@ -23,6 +23,9 @@ function AdminSidebar() {
       <NavLink to="/ViewNgo" className="sidebar-link">
         Manage NGO
       </NavLink>
+      <NavLink to="/adminviewpoststatus" className="sidebar-link">
+        Post status
+      </NavLink>
       <NavLink to="/viewdonor" className="sidebar-link">
         View Donor
       </NavLink>

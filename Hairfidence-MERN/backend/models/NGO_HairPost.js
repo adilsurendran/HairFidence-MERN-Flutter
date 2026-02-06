@@ -4,7 +4,7 @@ const hairPostSchema = new mongoose.Schema(
   {
     ngoId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Ngo",
       required: true,
     },
 

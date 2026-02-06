@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// adjust import path if needed
+import 'package:hairfidence/login.dart';
+import 'PatientHomePage.dart'; // adjust import path if needed
 
 class PatientProfilePage extends StatefulWidget {
   const PatientProfilePage({super.key});

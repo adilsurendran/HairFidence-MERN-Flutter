@@ -32,6 +32,8 @@ import ViewComplaints from './components/admin/ViewComplaints'
 import NgoComplaints from './components/ngo/NgoComplaints'
 import NgoHairRequests from './components/ngo/NgoHairRequests'
 import NgoDonorHairPosts from './components/ngo/NgoDonorHairPosts'
+import NgoChat from './components/ngo/NgoChat'
+import AdminPostStatus from './components/admin/AdminPostStatus'
 
 function App() {
 
@@ -56,6 +58,7 @@ function App() {
         <Route path='/SendNotification' element={<SendNotification/>}/>
         <Route path='/Report' element={<Report/>}/>
         <Route path='/managecomplaints' element={<ViewComplaints/>}/>
+        <Route path='/adminviewpoststatus' element={<AdminPostStatus/>}/>
 
 
         <Route path='/NgoDashboard' element={<NgoDashboard/>}/>
@@ -71,6 +74,7 @@ function App() {
           <Route path='/Viewrequeststatus' element={<NgoMyRequests/>}/>
           <Route path='/ngo/complaits' element={<NgoComplaints/>}/>
           <Route path='/ngo/donorpost' element={<NgoDonorHairPosts/>}/>
+          <Route path='/ngo/chat' element={<NgoChat/>}/>
 
            </Routes>
     </>

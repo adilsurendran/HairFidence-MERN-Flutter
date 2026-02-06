@@ -13,6 +13,7 @@ import complaintRoutes from "./routes/complaintRoutes.js";
 import adminRouter from "./routes/adminRoutes.js";
 import donorHairPostRoutes from "./routes/donorHairPostRoutes.js";
 import donorRoutes from "./routes/donorRoutes.js";
+import Chatrouter from "./routes/conversation.routes.js";
 
 mongoose
   .connect("mongodb://localhost:27017/Hairfidence")
@@ -35,9 +36,10 @@ app.use("/api",Regrouter)
 app.use("/api", patientRouter);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/complaints", complaintRoutes);
-app.use("/api/admin/", adminRouter);
+app.use("/api/admin", adminRouter);
 app.use("/api/donor-hair-posts", donorHairPostRoutes);
 app.use("/api/donor",donorRoutes)
+app.use("/api/chat",Chatrouter)
 
 
 
