@@ -24,7 +24,7 @@ function AdminSidebar() {
         Manage NGO
       </NavLink>
       <NavLink to="/adminviewpoststatus" className="sidebar-link">
-        Post status
+        Generate Report
       </NavLink>
       <NavLink to="/viewdonor" className="sidebar-link">
         View Donor
@@ -41,10 +41,6 @@ function AdminSidebar() {
       <NavLink to="/SendNotification" className="sidebar-link">
         Send Notification
       </NavLink>
-      <NavLink to="/Report" className="sidebar-link">
-        Generate Report
-      </NavLink>
-
       {/* LOGOUT */}
       <button className="sidebar-link logout-btn" onClick={handleLogout}>
         Logout

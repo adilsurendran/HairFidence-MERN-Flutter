@@ -1,108 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'package:dio/dio.dart';
-// import 'package:hairfidence/DonorRegister.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'donor_add_hair_post_page.dart';
-
-// class DonorManageHairPostsPage extends StatefulWidget {
-//   const DonorManageHairPostsPage({super.key});
-
-//   @override
-//   State<DonorManageHairPostsPage> createState() =>
-//       _DonorManageHairPostsPageState();
-// }
-
-// class _DonorManageHairPostsPageState extends State<DonorManageHairPostsPage> {
-//   final Dio dio = Dio();
-//   final Color gold = const Color(0xFFFFC107);
-
-//   List posts = [];
-//   bool loading = true;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchPosts();
-//   }
-
-//   Future<void> fetchPosts() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final donorId = prefs.getString("profileId");
-
-//     final res = await dio.get("$baseUrl/donor-hair-posts/$donorId");
-//   print(res.data);
-//     setState(() {
-//       posts = res.data;
-//       loading = false;
-//     });
-//   }
-
-//   Future<void> deletePost(String id) async {
-//     await dio.delete("$baseUrl/donor-hair-posts/$id");
-//     fetchPosts();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         backgroundColor: gold,
-//         title:
-//             const Text("My Donation Posts", style: TextStyle(color: Colors.black)),
-//         actions: [
-//           IconButton(
-//             icon: const Icon(Icons.add, color: Colors.black),
-//             onPressed: () async {
-//               final refresh = await Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (_) => const DonorAddHairPostPage()),
-//               );
-//               if (refresh == true) fetchPosts();
-//             },
-//           ),
-//         ],
-//       ),
-//       body: loading
-//           ? const Center(child: CircularProgressIndicator())
-//           : ListView.builder(
-//               padding: const EdgeInsets.all(16),
-//               itemCount: posts.length,
-//               itemBuilder: (c, i) {
-//                 final p = posts[i];
-//                 return Card(
-//                   color: const Color(0xFF1C1C1C),
-//                   margin: const EdgeInsets.only(bottom: 12),
-//                   child: ListTile(
-//                     title: Text(
-//                       p["title"],
-//                       style: const TextStyle(color: Colors.white),
-//                     ),
-//                     subtitle: Text(
-//                       "Date: ${p["donationDate"]}\nQty: ${p["quantity"]}",
-//                       style: const TextStyle(color: Colors.white70),
-//                     ),
-//                     trailing: p["status"] == "closed"
-//                         ? const Text("POST CLOSED",
-//                             style: TextStyle(color: Colors.green))
-//                         : IconButton(
-//                             icon: const Icon(Icons.delete,
-//                                 color: Colors.red),
-//                             onPressed: () => deletePost(p["_id"]),
-//                           ),
-//                   ),
-//                 );
-//               },
-//             ),
-//     );
-//   }
-// }
-
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'donor_add_hair_post_page.dart';
 
@@ -209,14 +109,14 @@ class _DonorManageHairPostsPageState
          APP BAR
       =============================== */
       appBar: AppBar(
-        backgroundColor: gold,
+        backgroundColor: dark,
         title: const Text(
           "My Donation Posts",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xFFFFC107), fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.black),
+            icon: const Icon(Icons.add, color: Color(0xFFFFC107)),
             onPressed: () async {
               final refresh = await Navigator.push(
                 context,

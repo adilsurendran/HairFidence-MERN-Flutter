@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'login.dart'; // baseUrl & proid
 import 'DonorHomePage.dart'; // for ngoId
 

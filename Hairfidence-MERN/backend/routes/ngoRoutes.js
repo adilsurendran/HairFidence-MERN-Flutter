@@ -1,5 +1,5 @@
 import express from "express";
-import { addNgo, deleteNgo, getActivePatientPosts, getAllNgos, getNgoById, getNgoRequests, sendRequestToPatientPost, updateNgo } from "../controllers/ngoController.js";
+import { addNgo, deleteNgo, getActivePatientPosts, getAllNgos, getNgoById, getNgoDashboardCounts, getNgoRequests, sendRequestToPatientPost, updateNgo } from "../controllers/ngoController.js";
 
 const ngoRouter = express.Router();
 
@@ -13,5 +13,7 @@ ngoRouter.get("/patient-posts/active", getActivePatientPosts);
 
 ngoRouter.post("/patient-post-requests", sendRequestToPatientPost);
 ngoRouter.get("/patient-post-requests/ngo/:ngoId", getNgoRequests);
+
+ngoRouter.get("/dashboard/:ngoId", getNgoDashboardCounts);
 
 export default ngoRouter;

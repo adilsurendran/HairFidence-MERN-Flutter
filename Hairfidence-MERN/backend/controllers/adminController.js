@@ -1,6 +1,9 @@
 import Donor from "../models/Donor.js";
 import login from "../models/login.js";
+import ngo from "../models/ngo.js";
 import Patient from "../models/Patient.js";
+import Complaint from "../models/complaint.js";
+
 
 export const getAllDonors = async (req, res) => {
   try {
@@ -84,5 +87,32 @@ export const togglePatientStatus = async (req, res) => {
     res.status(500).json({
       message: "Status update failed",
     });
+  }
+};
+
+
+export const getAdminDashboardCounts = async (req, res) => {
+  try {
+    const [
+      ngoCount,
+      donorCount,
+      patientCount,
+      pendingComplaints,
+    ] = await Promise.all([
+      ngo.countDocuments(),
+      Donor.countDocuments(),
+      Patient.countDocuments(),
+      Complaint.countDocuments({ status: "pending" }),
+    ]);
+
+    res.status(200).json({
+      ngos: ngoCount,
+      donors: donorCount,
+      patients: patientCount,
+      pendingComplaints,
+    });
+  } catch (err) {
+    console.error("Admin dashboard error:", err);
+    res.status(500).json({ message: "Dashboard load failed" });
   }
 };

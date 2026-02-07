@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'DonorRegister.dart';
 
@@ -60,11 +61,11 @@ class _DonorViewNotificationsPageState
         title: const Text(
           "Notifications",
           style: TextStyle(
-            color: Colors.black,
+            color: Color(0xFFFFC107),
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: const Color(0xFFFFC107),
+        backgroundColor: Colors.black,
         centerTitle: true,
       ),
 

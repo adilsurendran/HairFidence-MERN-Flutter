@@ -8,41 +8,94 @@
   margin-left: 240px;
   padding: 30px;
   width: 100%;
+  min-height: 100vh;
 }
 
+/* Title */
 .dashboard-title {
   color: #ffc107;
-  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.card-grid {
+/* Section title */
+.section-title {
+  color: #ffc107;
+  font-size: 18px;
+  margin: 25px 0 15px;
+}
+
+/* Loading */
+.dashboard-center {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  color: #aaa;
+}
+
+/* =====================
+   STATS (NO CLICK)
+===================== */
+.admin-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-.stat-card {
+.admin-stat-box {
   background: #111;
-  border: 1px solid rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.25);
   border-radius: 16px;
-  padding: 30px;
+  padding: 35px;
+  text-align: center;
+}
+
+.admin-stat-box h2 {
+  color: #ffc107;
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.admin-stat-box p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* =====================
+   NAVIGATION CARDS
+===================== */
+.admin-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.admin-nav-card {
+  background: #000;
+  border: 1px solid #ffc107;
+  border-radius: 14px;
+  padding: 22px;
+  color: #ffc107;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.stat-card h2 {
-  color: #ffc107;
-  font-size: 36px;
-  margin-bottom: 10px;
+.admin-nav-card:hover {
+  background: #ffc107;
+  color: #000;
 }
 
-.stat-card p {
-  color: #aaa;
-  font-size: 16px;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-content {
+    margin-left: 0;
+  }
 }

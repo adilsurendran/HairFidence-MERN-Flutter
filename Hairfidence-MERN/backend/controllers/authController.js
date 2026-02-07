@@ -32,6 +32,7 @@ export const loginUser = async (req, res) => {
     }
 
     let profileId = null;
+    let patientName = null;
 
     // role-based profile lookup
     if (user.role === "ngo") {
@@ -47,6 +48,7 @@ export const loginUser = async (req, res) => {
     if (user.role === "patient") {
       const patient = await Patient.findOne({ loginId: user._id });
       profileId = patient?._id;
+      patientName = patient?.name;
     }
 
     res.status(200).json({
@@ -54,6 +56,7 @@ export const loginUser = async (req, res) => {
       loginId: user._id,
       role: user.role,
       profileId, // ngoId / donorId / patientId
+      patientName
     });
   } catch (error) {
     res.status(500).json({

@@ -50,7 +50,7 @@ function NgoSidebar() {
       <NavLink to="/ngo/complaits" className="ngo-link">
         Complaints
       </NavLink>
-      <button className="logout-btn" onClick={handleLogout}>
+      <button className="logout-btnn ngo-link" onClick={handleLogout}>
             Logout
       </button>
     </div>

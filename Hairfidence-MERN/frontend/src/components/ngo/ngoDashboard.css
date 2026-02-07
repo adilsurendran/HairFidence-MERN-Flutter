@@ -1,3 +1,4 @@
+/* Layout */
 .ngo-container {
   display: flex;
   background: #000;
@@ -8,52 +9,119 @@
   margin-left: 240px;
   padding: 30px;
   width: 100%;
+  min-height: 100vh;
+}
+
+/* Header */
+.ngo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .ngo-title {
   color: #ffc107;
-  margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
 }
 
-/* Cards */
-.ngo-card-grid {
+/* Notification */
+.ngo-notification {
+  position: relative;
+  font-size: 26px;
+  cursor: pointer;
+  color: #ffc107;
+}
+
+.notify-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #dc3545;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Section title */
+.section-title {
+  color: #ffc107;
+  font-size: 18px;
+  margin: 25px 0 15px;
+}
+
+/* Loading */
+.dashboard-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.loading-text {
+  color: #aaa;
+}
+
+/* ======================
+   STATS GRID (NO CLICK)
+====================== */
+.ngo-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-.ngo-stat-card {
+.ngo-stat-box {
   background: #111;
-  border: 1px solid rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.25);
   border-radius: 16px;
-  padding: 30px;
+  padding: 35px;
+  text-align: center;
+}
+
+.ngo-stat-box h2 {
+  color: #ffc107;
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.ngo-stat-box p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* ======================
+   NAVIGATION GRID
+====================== */
+.ngo-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.ngo-nav-card {
+  background: #000;
+  border: 1px solid #ffc107;
+  border-radius: 14px;
+  padding: 22px;
+  color: #ffc107;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.ngo-stat-card h2 {
-  color: #ffc107;
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.ngo-stat-card p {
-  color: #aaa;
-  font-size: 16px;
-}
-
-.ngo-stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+.ngo-nav-card:hover {
+  background: #ffc107;
+  color: #000;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .ngo-content {
     margin-left: 0;
-    padding: 20px;
   }
 }

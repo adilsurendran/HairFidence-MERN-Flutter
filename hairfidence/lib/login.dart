@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorHomePage.dart';
 import 'package:hairfidence/PatientHomePage.dart';
+import 'package:hairfidence/Register.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairfidence/DonorRegister.dart';
-import 'package:hairfidence/Register.dart' hide baseUrl;
 
-// String baseUrl = "http://192.168.1.35:8000/api";
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -15,6 +15,7 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
  String? proid;
+ String? pName;
 class _LoginpageState extends State<Loginpage> {
   final Dio dio = Dio();
 
@@ -47,6 +48,7 @@ class _LoginpageState extends State<Loginpage> {
 print(res.data);
       final data = res.data;
 proid= data["profileId"];
+pName = data["patientName"];
       /// STORE DATA GLOBALLY
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString("loginId", data["loginId"]);
@@ -66,7 +68,7 @@ proid= data["profileId"];
 
         case "patient":
           Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (_) => const PatientHomePage()));
+            MaterialPageRoute(builder: (_) => PatientHomePage(patientname: pName ?? '',)));
           break;
         default:
           ScaffoldMessenger.of(context).showSnackBar(

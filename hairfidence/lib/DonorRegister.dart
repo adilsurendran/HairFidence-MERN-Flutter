@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:hairfidence/login.dart';
 
-String baseUrl = "http://192.168.1.36:8000/api";
 
 class DonorRegister extends StatefulWidget {
   const DonorRegister({super.key});
@@ -14,7 +14,6 @@ class DonorRegister extends StatefulWidget {
 class _DonorRegisterState extends State<DonorRegister> {
   final Dio dio = Dio();
 
-  // Form controllers
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _phone = TextEditingController();
@@ -25,12 +24,15 @@ class _DonorRegisterState extends State<DonorRegister> {
   final _dob = TextEditingController();
 
   String? selectedGender;
+  String? selectedNgoId;
   bool isLoading = false;
 
-  /// NGO
+  /// ERROR MAP (INLINE VALIDATION)
+  final Map<String, String?> errors = {};
+
+  /// NGO DATA
   List ngos = [];
   List filteredNgos = [];
-  String? selectedNgoId;
 
   @override
   void initState() {
@@ -46,34 +48,22 @@ class _DonorRegisterState extends State<DonorRegister> {
         ngos = res.data;
         filteredNgos = ngos;
       });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to load NGOs")),
-      );
-    }
+    } catch (_) {}
   }
 
   /// SEARCH NGO
   void searchNgo(String value) {
     setState(() {
       filteredNgos = ngos.where((ngo) {
-        return ngo["name"]
-                .toString()
-                .toLowerCase()
-                .contains(value.toLowerCase()) ||
-            ngo["place"]
-                .toString()
-                .toLowerCase()
-                .contains(value.toLowerCase()) ||
-            ngo["pincode"]
-                .toString()
-                .contains(value);
+        return ngo["name"].toString().toLowerCase().contains(value.toLowerCase()) ||
+            ngo["place"].toString().toLowerCase().contains(value.toLowerCase()) ||
+            ngo["pincode"].toString().contains(value);
       }).toList();
     });
   }
 
   /// DATE PICKER
-  Future<void> selectDate(BuildContext context) async {
+  Future<void> selectDate() async {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -81,33 +71,62 @@ class _DonorRegisterState extends State<DonorRegister> {
       lastDate: DateTime.now(),
     );
     if (picked != null) {
-      _dob.text = "${picked.year}-${picked.month}-${picked.day}";
-      setState(() {});
+      setState(() => _dob.text = "${picked.year}-${picked.month}-${picked.day}");
     }
   }
 
-  /// REGISTER DONOR
-  Future<void> registerDonor() async {
-    if (_name.text.isEmpty ||
-        _email.text.isEmpty ||
-        _phone.text.isEmpty ||
-        _address.text.isEmpty ||
-        _pin.text.isEmpty ||
-        _district.text.isEmpty ||
-        _password.text.isEmpty ||
-        _dob.text.isEmpty ||
-        selectedGender == null ||
-        selectedNgoId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("All fields including NGO are required")),
-      );
-      return;
+  /// =====================
+  /// VALIDATION
+  /// =====================
+  bool validate() {
+    errors.clear();
+
+    if (_name.text.trim().isEmpty) errors["name"] = "Name is required";
+    if (_email.text.trim().isEmpty) {
+      errors["email"] = "Email is required";
+    } else if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(_email.text)) {
+      errors["email"] = "Enter a valid email";
     }
+
+    if (_phone.text.trim().isEmpty) {
+      errors["phone"] = "Phone number is required";
+    } else if (!RegExp(r'^\d{10}$').hasMatch(_phone.text)) {
+      errors["phone"] = "Phone must be exactly 10 digits";
+    }
+
+    if (_password.text.trim().isEmpty) {
+      errors["password"] = "Password is required";
+    } else if (_password.text.length < 6) {
+      errors["password"] = "Minimum 6 characters required";
+    }
+
+    if (_address.text.trim().isEmpty) errors["address"] = "Address is required";
+
+    if (_pin.text.trim().isEmpty) {
+      errors["pin"] = "PIN is required";
+    } else if (!RegExp(r'^\d{6}$').hasMatch(_pin.text)) {
+      errors["pin"] = "PIN must be exactly 6 digits";
+    }
+
+    if (_district.text.trim().isEmpty) errors["district"] = "District is required";
+    if (_dob.text.trim().isEmpty) errors["dob"] = "Date of birth is required";
+    if (selectedGender == null) errors["gender"] = "Gender is required";
+    if (selectedNgoId == null) errors["ngo"] = "Please select an NGO";
+
+    setState(() {});
+    return errors.isEmpty;
+  }
+
+  /// =====================
+  /// REGISTER DONOR
+  /// =====================
+  Future<void> registerDonor() async {
+    if (!validate()) return;
 
     setState(() => isLoading = true);
 
     try {
-      final res = await dio.post(
+      await dio.post(
         "$baseUrl/register/donor",
         data: {
           "name": _name.text,
@@ -120,12 +139,8 @@ class _DonorRegisterState extends State<DonorRegister> {
           "gender": selectedGender,
           "dob": _dob.text,
           "role": "donor",
-          "ngoId": selectedNgoId, // ✅ IMPORTANT
+          "ngoId": selectedNgoId,
         },
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(res.data["message"] ?? "Registered")),
       );
 
       Navigator.pushAndRemoveUntil(
@@ -133,24 +148,21 @@ class _DonorRegisterState extends State<DonorRegister> {
         MaterialPageRoute(builder: (_) => const Loginpage()),
         (_) => false,
       );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Registration failed")),
-      );
-    } finally {
+    } catch (_) {} finally {
       setState(() => isLoading = false);
     }
   }
 
+  /// =====================
+  /// UI
+  /// =====================
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          "Register as Donor",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
+        title: const Text("Register as Donor",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFFFFC107),
         centerTitle: true,
       ),
@@ -158,75 +170,66 @@ class _DonorRegisterState extends State<DonorRegister> {
         padding: const EdgeInsets.all(20),
         child: Card(
           color: const Color(0xFF1C1C1C),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                _field("Name", Icons.person, _name),
-                _field("Email", Icons.email, _email),
-                _field("Phone", Icons.phone, _phone),
-                _field("Address", Icons.location_on, _address),
-                _field("PIN", Icons.pin, _pin),
-                _field("District", Icons.map, _district),
-                _field("Password", Icons.lock, _password, obscure: true),
+                _field("Name", Icons.person, _name, "name"),
+                _field("Email", Icons.email, _email, "email"),
+                _field("Phone", Icons.phone, _phone, "phone"),
+                _field("Address", Icons.location_on, _address, "address"),
+                _field("PIN", Icons.pin, _pin, "pin"),
+                _field("District", Icons.map, _district, "district"),
+                _field("Password", Icons.lock, _password, "password", obscure: true),
 
                 DropdownButtonFormField<String>(
-                  dropdownColor: Colors.black,
                   decoration: _decoration("Gender", Icons.people),
+                  dropdownColor: Colors.black,
                   items: ["Male", "Female"]
                       .map((e) => DropdownMenuItem(
                             value: e,
-                            child: Text(e,
-                                style:
-                                    const TextStyle(color: Colors.white)),
+                            child: Text(e, style: const TextStyle(color: Colors.white)),
                           ))
                       .toList(),
-                  onChanged: (v) => selectedGender = v,
+                  onChanged: (v) => setState(() => selectedGender = v),
                 ),
+                _error("gender"),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
 
                 TextFormField(
                   controller: _dob,
                   readOnly: true,
-                  onTap: () => selectDate(context),
+                  onTap: selectDate,
                   style: const TextStyle(color: Colors.white),
-                  decoration:
-                      _decoration("Date of Birth", Icons.calendar_month),
+                  decoration: _decoration("Date of Birth", Icons.calendar_month),
                 ),
+                _error("dob"),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
 
-                /// NGO SEARCH
                 TextFormField(
                   onChanged: searchNgo,
                   style: const TextStyle(color: Colors.white),
-                  decoration:
-                      _decoration("Search NGO (name/place/pin)", Icons.search),
+                  decoration: _decoration("Search NGO", Icons.search),
                 ),
 
                 const SizedBox(height: 12),
 
-                /// NGO SELECT
                 DropdownButtonFormField<String>(
-                  dropdownColor: Colors.black,
                   decoration: _decoration("Select NGO", Icons.business),
+                  dropdownColor: Colors.black,
                   items: filteredNgos
-                      .map<DropdownMenuItem<String>>(
-                        (ngo) => DropdownMenuItem(
-                          value: ngo["_id"],
-                          child: Text(
-                            "${ngo["name"]} - ${ngo["place"]}",
-                            style:
-                                const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      )
+                      .map<DropdownMenuItem<String>>((ngo) => DropdownMenuItem(
+                            value: ngo["_id"],
+                            child: Text("${ngo["name"]} - ${ngo["place"]}",
+                                style: const TextStyle(color: Colors.white)),
+                          ))
                       .toList(),
-                  onChanged: (value) => selectedNgoId = value,
+                  onChanged: (v) => setState(() => selectedNgoId = v),
                 ),
+                _error("ngo"),
 
                 const SizedBox(height: 30),
 
@@ -234,6 +237,7 @@ class _DonorRegisterState extends State<DonorRegister> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
+                    onPressed: isLoading ? null : registerDonor,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFFC107),
                       foregroundColor: Colors.black,
@@ -241,16 +245,13 @@ class _DonorRegisterState extends State<DonorRegister> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: isLoading ? null : registerDonor,
                     child: isLoading
                         ? const CircularProgressIndicator(color: Colors.black)
-                        : const Text(
-                            "REGISTER",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                        : const Text("REGISTER",
+                            style:
+                                TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -259,17 +260,34 @@ class _DonorRegisterState extends State<DonorRegister> {
     );
   }
 
-  Widget _field(String label, IconData icon, TextEditingController c,
+  /// =====================
+  /// HELPERS
+  /// =====================
+  Widget _field(String label, IconData icon, TextEditingController c, String key,
       {bool obscure = false}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TextFormField(
-        controller: c,
-        obscureText: obscure,
-        style: const TextStyle(color: Colors.white),
-        decoration: _decoration(label, icon),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextFormField(
+          controller: c,
+          obscureText: obscure,
+          style: const TextStyle(color: Colors.white),
+          decoration: _decoration(label, icon),
+        ),
+        _error(key),
+        const SizedBox(height: 12),
+      ],
     );
+  }
+
+  Widget _error(String key) {
+    return errors[key] != null
+        ? Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(errors[key]!,
+                style: const TextStyle(color: Colors.red, fontSize: 13)),
+          )
+        : const SizedBox.shrink();
   }
 
   InputDecoration _decoration(String label, IconData icon) {
@@ -279,8 +297,7 @@ class _DonorRegisterState extends State<DonorRegister> {
       prefixIcon: Icon(icon, color: const Color(0xFFFFC107)),
       filled: true,
       fillColor: Colors.black,
-      border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
     );
   }
 }

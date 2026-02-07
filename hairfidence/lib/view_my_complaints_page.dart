@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -61,11 +62,11 @@ class _ViewMyComplaintsPageState extends State<ViewMyComplaintsPage> {
         title: const Text(
           "My Complaints",
           style: TextStyle(
-            color: Colors.black,
+            color: Color(0xFFFFC107),
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: gold,
+        backgroundColor: Colors.black,
         centerTitle: true,
       ),
 

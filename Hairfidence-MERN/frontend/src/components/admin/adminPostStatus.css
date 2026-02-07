@@ -1,0 +1,156 @@
+/* Layout */
+.poststatus-wrapper {
+  display: flex;
+  background: #000;
+  min-height: 100vh;
+}
+
+/* Main */
+.poststatus-main {
+  margin-left: 260px;
+  padding: 35px;
+  width: 100%;
+}
+
+/* Title */
+.poststatus-title {
+  color: #ffc107;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Filters */
+.poststatus-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.poststatus-filters input,
+.poststatus-filters select {
+  background: #000;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.poststatus-filters input:focus,
+.poststatus-filters select:focus {
+  outline: none;
+  border-color: #ffc107;
+}
+
+/* Buttons */
+.filter-btn,
+.pdf-btn {
+  background: transparent;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.filter-btn:hover,
+.pdf-btn:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+/* Card */
+.poststatus-card {
+  background: #000;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.2);
+  overflow: hidden;
+}
+
+/* Table */
+.poststatus-table {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header */
+.poststatus-table thead {
+  background: #ffc107;
+}
+
+.poststatus-table thead th {
+  color: #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+}
+
+.poststatus-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.poststatus-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* Rows */
+.poststatus-table tbody tr {
+  background: #000;
+  transition: 0.3s;
+}
+
+.poststatus-table tbody tr:hover {
+  background: #111;
+}
+
+/* Cells */
+.poststatus-table td {
+  padding: 14px;
+  border-top: 1px solid #222;
+  vertical-align: middle;
+}
+
+/* Empty */
+.empty-cell {
+  text-align: center;
+  color: #777;
+}
+
+/* Status badges */
+.status {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.status.pending {
+  color: #ffc107;
+}
+
+.status.approved,
+.status.active {
+  color: #28a745;
+}
+
+.status.rejected,
+.status.closed {
+  color: #dc3545;
+}
+
+.status.collected {
+  color: #17a2b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poststatus-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

@@ -1,128 +1,12 @@
-// import 'package:flutter/material.dart';
-// import 'package:dio/dio.dart';
-// import 'package:hairfidence/DonorRegister.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'patient_add_post_page.dart';
-// import 'patient_request_history_page.dart';
-
-// class PatientManagePostsPage extends StatefulWidget {
-//   const PatientManagePostsPage({super.key});
-
-//   @override
-//   State<PatientManagePostsPage> createState() =>
-//       _PatientManagePostsPageState();
-// }
-
-// class _PatientManagePostsPageState extends State<PatientManagePostsPage> {
-//   final Dio dio = Dio();
-//   List posts = [];
-//   bool loading = true;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchPosts();
-//   }
-
-//   Future<void> fetchPosts() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final patientId = prefs.getString("profileId");
-
-//     final res =
-//         await dio.get("$baseUrl/patient-posts/$patientId");
-//         print(res.data);
-
-//     setState(() {
-//       posts = res.data;
-//       loading = false;
-//     });
-//   }
-
-//   Future<void> deletePost(String id) async {
-//     await dio.delete("$baseUrl/patient-posts/$id");
-//     fetchPosts();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         title:
-//             const Text("My Hair Posts", style: TextStyle(color: Colors.black)),
-//         backgroundColor: const Color(0xFFFFC107),
-//         actions: [
-//           IconButton(
-//             icon: const Icon(Icons.history, color: Colors.black),
-//             onPressed: () {
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (_) =>
-//                         const PatientRequestHistoryPage()),
-//               );
-//             },
-//           ),
-//           IconButton(
-//             icon: const Icon(Icons.add, color: Colors.black),
-//             onPressed: () async {
-//               final refresh = await Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (_) => const PatientAddPostPage()),
-//               );
-//               if (refresh == true) fetchPosts();
-//             },
-//           ),
-//         ],
-//       ),
-//       body: loading
-//           ? const Center(child: CircularProgressIndicator())
-//           : posts.isEmpty
-//               ? const Center(
-//                   child: Text("No posts",
-//                       style: TextStyle(color: Colors.white70)))
-//               : ListView.builder(
-//                   padding: const EdgeInsets.all(16),
-//                   itemCount: posts.length,
-//                   itemBuilder: (context, i) {
-//                     final p = posts[i];
-//                     return Card(
-//                       color: const Color(0xFF1C1C1C),
-//                       margin: const EdgeInsets.only(bottom: 12),
-//                       child: ListTile(
-//                         title: Text(
-//                           "${p["hairType"]} | ${p["hairLength"]} cm",
-//                           style: const TextStyle(color: Colors.white),
-//                         ),
-//                         subtitle: Text(
-//                           p["location"],
-//                           style:
-//                               const TextStyle(color: Colors.white70),
-//                         ),
-//                         trailing: IconButton(
-//                           icon:
-//                               const Icon(Icons.delete, color: Colors.red),
-//                           onPressed: () => deletePost(p["_id"]),
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'patient_add_post_page.dart';
 import 'patient_request_history_page.dart';
 
-// 🔴 CHANGE BASE URL IF NEEDED
 
 class PatientManagePostsPage extends StatefulWidget {
   const PatientManagePostsPage({super.key});
@@ -216,14 +100,14 @@ class _PatientManagePostsPageState extends State<PatientManagePostsPage> {
       appBar: AppBar(
         title: const Text(
           "My Hair Posts",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xFFFFC107), fontWeight: FontWeight.bold),
         ),
-        backgroundColor: gold,
+        backgroundColor: Colors.black,
         centerTitle: true,
         actions: [
           /// REQUEST HISTORY
           IconButton(
-            icon: const Icon(Icons.history, color: Colors.black),
+            icon: const Icon(Icons.history, color: Color(0xFFFFC107)),
             onPressed: () {
               Navigator.push(
                 context,
@@ -236,7 +120,7 @@ class _PatientManagePostsPageState extends State<PatientManagePostsPage> {
 
           /// ADD POST
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.black),
+            icon: const Icon(Icons.add, color: Color(0xFFFFC107)),
             onPressed: () async {
               final refresh = await Navigator.push(
                 context,

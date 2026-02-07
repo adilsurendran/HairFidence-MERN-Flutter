@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'DonorRegister.dart';
 
@@ -60,8 +61,8 @@ class _DonorSendComplaintPageState extends State<DonorSendComplaintPage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text("Send Complaint",
-            style: TextStyle(color: Colors.black)),
-        backgroundColor: const Color(0xFFFFC107),
+            style: TextStyle(color:Color(0xFFFFC107))),
+        backgroundColor:  Colors.black,
         centerTitle: true,
       ),
       body: Padding(

@@ -4,6 +4,11 @@ import Ngo from "../models/ngo.js";
 import PatientPost from "../models/PatientPost.js";
 import PatientPostRequest from "../models/PatientPostRequest.js";
 import PatientReport from "../models/PatientReport.js";
+import Notification from "../models/Notification.js";
+import hairRequest from "../models/hairRequest.js";
+import campaign from "../models/campaign.js";
+import NGO_HairPost from "../models/NGO_HairPost.js";
+import DonorHairPost from "../models/DonorHairPost.js";
 
 
 export const addNgo = async (req, res) => {
@@ -230,5 +235,87 @@ export const getNgoRequests = async (req, res) => {
   }
 };
 
+// export const getNgoDashboardCounts = async (req, res) => {
+//   try {
+//     const { ngoId } = req.params;
 
+//     const [
+//       campaignsCount,
+//       notificationsCount,
+//       requestsCount,
+//       donorPostsCount,
+//     ] = await Promise.all([
+//       campaign.countDocuments({ ngoId }),
+//       Notification.countDocuments({ ngoId }),
+//       hairRequest.countDocuments({ ngoId }),
+//       NGO_HairPost.countDocuments({ ngoId }),
+//     ]);
+
+//     res.status(200).json({
+//       campaigns: campaignsCount,
+//       notifications: notificationsCount,
+//       requests: requestsCount,
+//       donorPosts: donorPostsCount,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: "Dashboard load failed" });
+//   }
+// };
+
+
+export const getNgoDashboardCounts = async (req, res) => {
+  try {
+    const { ngoId } = req.params;
+
+    /* -------------------------------
+       1. Campaign count
+    -------------------------------- */
+    const campaignsCount = await campaign.countDocuments({
+      ngoId,
+    });
+
+    /* -------------------------------
+       2. Notifications count
+       (NGO OR ALL)
+    -------------------------------- */
+    const notificationsCount = await Notification.countDocuments({
+      roles: { $in: ["ngo", "all"] },
+    });
+
+    /* -------------------------------
+       3. Donor hair posts count
+    -------------------------------- */
+    const donorPostsCount = await DonorHairPost.countDocuments({
+      ngoId,
+    });
+
+    /* -------------------------------
+       4. Requests count
+       (requests for this NGO’s posts)
+    -------------------------------- */
+    const ngoPosts = await NGO_HairPost.find(
+      { ngoId },
+      { _id: 1 }
+    );
+
+    const postIds = ngoPosts.map((p) => p._id);
+
+    const requestsCount = await hairRequest.countDocuments({
+      postId: { $in: postIds },
+    });
+
+    /* -------------------------------
+       RESPONSE
+    -------------------------------- */
+    res.status(200).json({
+      campaigns: campaignsCount,
+      notifications: notificationsCount,
+      donorPosts: donorPostsCount,
+      requests: requestsCount,
+    });
+  } catch (error) {
+    console.error("NGO Dashboard Error:", error);
+    res.status(500).json({ message: "Dashboard load failed" });
+  }
+};
 

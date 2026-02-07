@@ -1,11 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './components/Login'
-import ManUser from './components/admin/ManUser'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ViewComplaint from './components/admin/ViewComplaint'
 import CampaignManagment from './components/ngo/CampaignManagment'
 import NgoProfile from './components/ngo/NgoProfile'
 import ViewReport from './ViewReport'

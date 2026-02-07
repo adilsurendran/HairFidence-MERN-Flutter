@@ -1,10 +1,28 @@
 .ngo-sidebar {
   width: 240px;
   background: #0d0d0d;
-  min-height: 100vh;
+  height: 100vh;              /* fixed viewport height */
   padding: 20px;
   position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;           /* enable vertical scroll */
 }
+
+/* Optional: smooth scrollbar (Chrome / Edge) */
+.ngo-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ngo-sidebar::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.ngo-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #ffc107;
+}
+
 
 .ngo-sidebar-title {
   color: #ffc107;
@@ -27,4 +45,9 @@
 .ngo-link.active {
   background: #ffc107;
   color: #000;
+}
+
+.logout-btnn{
+  background-color: #000;
+  color: #ffc107;
 }

@@ -151,6 +151,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorHomePage.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DonorAddHairPostPage extends StatefulWidget {
@@ -237,10 +238,10 @@ class _DonorAddHairPostPageState extends State<DonorAddHairPostPage> {
          APP BAR
       ============================ */
       appBar: AppBar(
-        backgroundColor: gold,
+        backgroundColor: Colors.black,
         title: const Text(
           "Add Donation Post",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Color(0xFFFFC107)),
         ),
       ),
 

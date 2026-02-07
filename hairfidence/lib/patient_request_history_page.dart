@@ -1,88 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'package:dio/dio.dart';
-// import 'package:hairfidence/DonorRegister.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-
-// class PatientRequestHistoryPage extends StatefulWidget {
-//   const PatientRequestHistoryPage({super.key});
-
-//   @override
-//   State<PatientRequestHistoryPage> createState() =>
-//       _PatientRequestHistoryPageState();
-// }
-
-// class _PatientRequestHistoryPageState
-//     extends State<PatientRequestHistoryPage> {
-//   final Dio dio = Dio();
-//   List requests = [];
-//   bool loading = true;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchRequests();
-//   }
-
-//   Future<void> fetchRequests() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final patientId = prefs.getString("profileId");
-
-//     final res = await dio.get(
-//         "$baseUrl/patient-post-requests/$patientId");
-//         print(res.data);
-
-//     setState(() {
-//       requests = res.data;
-//       loading = false;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         title: const Text("Request History",
-//             style: TextStyle(color: Colors.black)),
-//         backgroundColor: const Color(0xFFFFC107),
-//       ),
-//       body: loading
-//           ? const Center(child: CircularProgressIndicator())
-//           : requests.isEmpty
-//               ? const Center(
-//                   child: Text("No requests",
-//                       style: TextStyle(color: Colors.white70)))
-//               : ListView.builder(
-//                   padding: const EdgeInsets.all(16),
-//                   itemCount: requests.length,
-//                   itemBuilder: (context, i) {
-//                     final r = requests[i];
-//                     return Card(
-//                       color: const Color(0xFF1C1C1C),
-//                       margin: const EdgeInsets.only(bottom: 12),
-//                       child: ListTile(
-//                         title: Text(
-//                           r["ngoId"]["name"],
-//                           style: const TextStyle(color: Colors.white),
-//                         ),
-//                         subtitle: Text(
-//                           "Status: ${r["status"]}",
-//                           style:
-//                               const TextStyle(color: Colors.white70),
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
 import 'package:hairfidence/UpdateProfile.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:hairfidence/DonorRegister.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:intl/intl.dart';
 
 
@@ -60,9 +61,9 @@ class _UpcomingCampaignsPageState extends State<UpcomingCampaignsPage> {
       appBar: AppBar(
         title: const Text(
           "Upcoming Campaigns",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xFFFFC107), fontWeight: FontWeight.bold),
         ),
-        backgroundColor: gold,
+        backgroundColor: Colors.black,
         centerTitle: true,
       ),
 

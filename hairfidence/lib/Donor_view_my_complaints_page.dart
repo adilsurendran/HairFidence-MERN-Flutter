@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'DonorRegister.dart';
 
@@ -51,8 +52,8 @@ class _DonorViewMyComplaintsPageState
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text("My Complaints",
-            style: TextStyle(color: Colors.black)),
-        backgroundColor: gold,
+            style: TextStyle(color: Color(0xFFFFC107))),
+        backgroundColor:Colors.black ,
         centerTitle: true,
       ),
       body: loading

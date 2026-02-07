@@ -11,7 +11,7 @@ const notificationSchema = new mongoose.Schema(
       required: true,
     },
     roles: {
-      type: [String], // ['donor', 'patient', 'ngo']
+      type: [String], // ['donor', 'patient', 'ngo','all]
       required: true,
     }
   },

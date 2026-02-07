@@ -24,10 +24,10 @@ const ngoSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
     },
-    state: String,
-    city: String,
-    place: String,
-    pincode: String,
+    state: {type:String,required: true},
+    city: {type:String,required: true},
+    place: {type:String,required: true},
+    pincode: {type:String,required: true},
   },
   { timestamps: true }
 );
