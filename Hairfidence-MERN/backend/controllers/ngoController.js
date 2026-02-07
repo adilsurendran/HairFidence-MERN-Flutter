@@ -92,7 +92,7 @@ export const getAllNgos = async (req, res) => {
 =========================== */
 export const getNgoById = async (req, res) => {
   try {
-    const ngo = await Ngo.findById(req.params.id).select("name contactPerson phone state city place pincode -_id");
+    const ngo = await Ngo.findById(req.params.id).select("name contactPerson email phone state city place pincode -_id");
     if (!ngo) return res.status(404).json({ message: "NGO not found" });
     res.status(200).json(ngo);
   } catch (error) {

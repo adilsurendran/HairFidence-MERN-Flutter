@@ -236,8 +236,10 @@ import Button from "react-bootstrap/Button";
 import api from "../apiInterceptor";
 import AdminSidebar from "./AdminSidebar";
 import "./addNgo.css";
+import { useNavigate } from "react-router-dom";
 
 function AddNgo() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     contactPerson: "",
@@ -332,6 +334,7 @@ function AddNgo() {
         pincode: "",
       });
       setErrors({});
+      navigate("/ViewNgo")
     } catch (err) {
       alert(err.response?.data?.message || "Failed to add NGO");
     } finally {
