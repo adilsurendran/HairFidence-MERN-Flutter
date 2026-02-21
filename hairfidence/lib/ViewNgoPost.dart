@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:hairfidence/DonorRegister.dart';
 import 'package:hairfidence/UpdateProfile.dart';
 import 'package:hairfidence/ip_setup.dart';
 import 'package:hairfidence/login.dart';

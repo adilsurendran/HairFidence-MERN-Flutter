@@ -75,7 +75,7 @@ class _IpSetupPageState extends State<IpSetupPage> {
     if (!validate()) return;
 
     baseUrl = "http://${_ip.text}:${_port.text}/api";
-    print(baseUrl+" \n BaseUrl now set in ipconfig page");
+    print("$baseUrl \n BaseUrl now set in ipconfig page");
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString("baseUrl", baseUrl);

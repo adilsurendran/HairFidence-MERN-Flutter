@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hairfidence/DonorRegister.dart';
 import 'package:hairfidence/ip_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairfidence/login.dart';

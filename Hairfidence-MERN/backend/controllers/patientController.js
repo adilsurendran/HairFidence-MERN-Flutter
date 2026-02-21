@@ -307,7 +307,7 @@ console.log(request);
 
     // If approved → restore quantity
     if (request.status === "approved") {
-      const post = await HairPost.findById(request.postId);
+      const post = await NGO_HairPost.findById(request.postId);
 
       if (post) {
         post.quantity += 1;

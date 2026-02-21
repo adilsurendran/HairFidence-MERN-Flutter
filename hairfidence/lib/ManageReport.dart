@@ -1,9 +1,7 @@
 
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:hairfidence/DonorRegister.dart';
 import 'package:hairfidence/ip_setup.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
